@@ -1,0 +1,39 @@
+
+
+* About
+
+
+ssplash can draw system booting splash and progress bar, support jpeg/gif.
+
+and only need vesafb kernel module, and pre created dev file /dev/fb0 in
+initramfs.
+
+
+
+* Require
+
+kernel header file, jpeg/gif decompresser, and static linking.
+
+
+
+* Usage & Configure
+
+'ssplash *.[bmp|jpeg]'  to invoke the program, it will draw the pic in
+the center of the display.
+
+use conf.ini to configure the progress bar, some 
+
+bar_y: progress bar y coefficent, x will automically centered
+bar_w: width of bar
+bar_h: height of bar
+bar_r: rgb color
+bar_g: rgb color
+bar_b: rgb color
+unit_w: width of painting unit
+unit_r: rgb color
+unit_g: rgb color
+unit_b: rgb color
+v_unit: how many unit will paint, need to be aligned with bar's width
+r_unit: highlight unit
+usec: painting interval in micro seconds
+
