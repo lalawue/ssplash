@@ -2,7 +2,7 @@
 #
 #
 
-EXE_NAME = a.out
+EXE_NAME = ssplash
 
 CC = gcc
 CFLAGS = -Wall -O2 -static -static-libgcc -g
@@ -35,4 +35,4 @@ all:
 	$(CC) -o $(EXE_NAME) $(CFLAGS) $(INCS_LIST) $(LIBS_LIST) $(DEF_LIST) $(SOURCES) $(LIB_LIST)
 
 clean:
-	rm -f *.out *.o
+	rm -f $(EXE_NAME) *.o
