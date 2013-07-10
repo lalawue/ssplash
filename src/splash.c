@@ -1,4 +1,4 @@
-/* ssplash.c --- 
+/* splash.c --- 
  * 
  * Copyright (c) 2009 kio_34@163.com. 
  * 
@@ -33,10 +33,10 @@
 #define SPL_OK  1
 #define SPL_ERR 0
 
-#define DLOG(fmt, args...) fprintf(stdout, "ssplash: "fmt, ##args)
-#define DERR(fmt, args...) fprintf(stderr, "ssplash: "fmt, ##args)
+#define DLOG(fmt, args...) fprintf(stdout, "splash: "fmt, ##args)
+#define DERR(fmt, args...) fprintf(stderr, "splash: "fmt, ##args)
 
-#define SSPLASH "ssplash"       /* program name */
+#define SPLASH "splash"       /* program name */
 
 static spl_t spl = { .repeat_loop = 1 };
 
@@ -69,7 +69,7 @@ spl_open_fbdev(fb_t *fb)
     }
 
     if  (fxi.visual != FB_VISUAL_TRUECOLOR && fxi.visual != FB_VISUAL_DIRECTCOLOR) { 
-        DERR("non-TRUE/DIRECT-COLOR visuals (0x%x) not supported by ssplash.\n" , fxi.visual); 
+        DERR("non-TRUE/DIRECT-COLOR visuals (0x%x) not supported by splash.\n" , fxi.visual); 
         goto err_exit;
     }
 
@@ -471,7 +471,7 @@ typedef unsigned char (*gif_get_color_index_method)(img_t *img, gif_t *gt, int x
 
 /* descriptor: scan gif raster bytes, and locate it in the color map
  *
- * parameters: spl, ssplash instance handler
+ * parameters: spl, splash instance handler
  *             data, image data pool
  *             rb, raster bit buffer pointer
  *             color_map, color_map of current image
@@ -943,7 +943,7 @@ spl_conf_construct_instance(spl_t *spl, char *key, char *val)
 }
 
 static int
-spl_init_ssplash(spl_t *spl, char *conf_name)
+spl_init_splash(spl_t *spl, char *conf_name)
 {
     FILE *fp;
     char line[128], *key, *val, *d;
@@ -985,7 +985,7 @@ err_open:
 }
 
 static void
-spl_dinit_ssplash(spl_t *spl)
+spl_dinit_splash(spl_t *spl)
 {
     fb_t *fb, *fb_next;
     img_t *img, *img_next;
@@ -1064,9 +1064,9 @@ int
 main(int argc, char *argv[])
 {
     int recover = 0; /* for initramfs to recover TEXT mode from GRAPHIC mode */
-    char *ssplash_conf;
+    char *splash_conf;
 
-    /* whether to invoke ssplash */
+    /* whether to invoke splash */
     if ( !spl_is_to_invoke_splash(CMD_LINE_FILE) )
         return 0;
 
@@ -1077,10 +1077,10 @@ main(int argc, char *argv[])
 
 
     /* parse command line */
-    ssplash_conf = NULL;
+    splash_conf = NULL;
     switch (argc) {
-        case 2: ssplash_conf = argv[1];
-            if ( !strcmp(ssplash_conf, "recover") ) {
+        case 2: splash_conf = argv[1];
+            if ( !strcmp(splash_conf, "recover") ) {
                 recover = 1;
                 DLOG("recover vt\n");
             }
@@ -1093,8 +1093,8 @@ main(int argc, char *argv[])
     }
 
 
-    /* init ssplash */
-    if (spl_init_ssplash(&spl, ssplash_conf) == SPL_ERR)
+    /* init splash */
+    if (spl_init_splash(&spl, splash_conf) == SPL_ERR)
         goto err_dinit;
 
     /* test and show image file */
@@ -1127,9 +1127,9 @@ main(int argc, char *argv[])
 #endif  /* TERMINAL_DEBUG */
 
 err_dinit:
-    spl_dinit_ssplash(&spl);
+    spl_dinit_splash(&spl);
 
     return  0; 
 }
 
-/* ssplash.c ends here */
+/* splash.c ends here */
