@@ -43,5 +43,9 @@ install:
 	install -vdm0755 $(DESTDIR)$(ETC_DIR)
 	install -vm0744 sample.conf $(ETC_DIR)/ssplash.conf
 
+uninstall:
+	rm -vf $(BIN_DIR)/$(EXE_NAME)
+	rm -vf $(ETC_DIR)/ssplash.conf
+
 clean:
 	rm -f $(EXE_NAME) *.o
