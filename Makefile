@@ -15,6 +15,8 @@ DEFS += SPL_SUPPORT_PROGRESS_BAR
 
 INCS_DIR = 
 LIBS_DIR =
+BIN_DIR = /sbin
+ETC_DIR = /etc
 
 ifeq (SPL_SUPPORT_JPEG, $(findstring SPL_SUPPORT_JPEG, $(DEFS)))
 LIBS += jpeg
@@ -33,6 +35,13 @@ DEF_LIST = $(addprefix -D, $(DEFS))
 
 all:
 	$(CC) -o $(EXE_NAME) $(CFLAGS) $(INCS_LIST) $(LIBS_LIST) $(DEF_LIST) $(SOURCES) $(LIB_LIST)
+
+install:
+	install -vdm0755 $(DESTDIR)$(BIN_DIR)
+	install -vm0744 $(EXE_NAME) $(BIN_DIR)/$(EXE_NAME)
+	
+	install -vdm0755 $(DESTDIR)$(ETC_DIR)
+	install -vm0744 sample.conf $(ETC_DIR)/ssplash.conf
 
 clean:
 	rm -f $(EXE_NAME) *.o
