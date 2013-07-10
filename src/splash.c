@@ -27,7 +27,7 @@
 
 #include <jpeglib.h>
 #include <gif_lib.h>
-#include "ssplash.h"
+#include "splash.h"
 #include <assert.h>
 
 #define SPL_OK  1
