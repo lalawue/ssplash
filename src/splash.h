@@ -1,4 +1,4 @@
-/* ssplash.h --- 
+/* splash.h --- 
  * 
  * Copyright (c) 2009 kio_34@163.com. 
  * 
@@ -17,8 +17,8 @@
 
 /* Code: */
 
-#ifndef _SSPLASH_H_
-#define _SSPLASH_H_ 0
+#ifndef _SPLASH_H_
+#define _SPLASH_H_ 0
 
 #define TYPE_NONE 0
 #define TYPE_BMP  1
@@ -224,6 +224,6 @@ typedef struct s_bmp_info_header { /* bmih */
 #define GET_BMP_WORD(H, T)  ((H->T##_2)<<8 | (H->T##_1))
 #define GET_BMP_DWORD(H, T) ((H->T##_4)<<24 | (H->T##_3)<<16 | (H->T##_2)<<8 | (H->T##_1))
 
-#endif  /* _SSPLASH_H_ */
+#endif  /* _SPLASH_H_ */
 
-/* ssplash.h ends here */
+/* splash.h ends here */

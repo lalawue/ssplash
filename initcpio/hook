@@ -1,0 +1,14 @@
+#!/usr/bin/ash
+
+run_earlyhook() {
+    msg " * Loading modules..."
+    modprobe nvidiafb uvesafb
+    msg " * Initiating splash..."
+    splash /etc/splash.conf
+}
+
+
+run_cleanuphook() {
+    msg " * Quiting splash..."
+    splash recover
+}
