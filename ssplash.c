@@ -611,7 +611,7 @@ spl_img_draw_gif(fb_t *fb, img_t *img, int *repeat_loop)
     gt = &s_gt;
 
     if ((gt->gf = DGifOpenFileName(img->name)) == NULL) {
-        PrintGifError();
+        GifError();
         goto err_exit;
     }
 
@@ -629,7 +629,7 @@ spl_img_draw_gif(fb_t *fb, img_t *img, int *repeat_loop)
 
     /* decoder all image data here, assume enougth memory */
     if (DGifSlurp(gt->gf) == GIF_ERROR) {
-        PrintGifError();
+        GifError();
         goto err_malloc;
     }
 
