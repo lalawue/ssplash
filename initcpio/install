@@ -1,16 +1,16 @@
 #!/bin/bash
 
 build() {
-    add_file "/etc/ssplash.conf"
-    add_file "/lib/ssplash/splash.jpeg"
-    add_binary "/sbin/ssplash"
+    add_file "/etc/splash.conf"
+    add_file "/lib/splash/splash.jpg"
+    add_binary "/sbin/splash"
     
     add_runscript
 }
 
 help() {
     cat <<HELPEOF
-This hook will use trigger ssplash.
+This hook will use trigger boot splash.
 HELPEOF
 }
 
