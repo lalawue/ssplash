@@ -45,6 +45,7 @@ uninstall:
 	rm -vf $(DESTDIR)/sbin/splash
 	rm -vf $(DESTDIR)/etc/splash.conf
 	rm -vf $(DESTDIR)/lib/splash/splash.jpg
+	rm -vf $(DESTDIR)/usr/lib/initcpio/{hooks,install}/splash
 
 clean:
 	rm -f splash *.o
